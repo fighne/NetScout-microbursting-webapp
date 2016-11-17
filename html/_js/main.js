@@ -70,6 +70,7 @@ $(document).ready( function(){
     $.get('/cgi-bin/cgi.sh', { 'probe' : app.config.probe, 'time' : app.config.iTime /*, 'ip' : document.timeframe.tf_ip.value, 'port' : document.timeframe.tf_port.value, 'rate' : 'ms' */}, function(data) {
         })
         .done( function(data) {
+			// process data here
         })
   });
 
