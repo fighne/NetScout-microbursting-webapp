@@ -32,8 +32,10 @@ $(document).ready( function(){
     document.parameterForm.parameter_2.value = $('#datetimepicker1 input').val();
     document.parameterForm.parameter_3.value = $('#timeSpan').html();
     document.parameterForm.parameter_4.value = $('#timeSeconds').val();
+	// checking for timespan which enables the process to ignore milliseconds if timespan is seconds
     $('#timeSpan').html() === 'Seconds' ? document.parameterForm.parameter_5.value = "000" : document.parameterForm.parameter_5.value = $('#timeMilliseconds').val();
     document.parameterForm.parameter_6.value = $('#ipAddress').val();
+	// checking for port selection, if 'all ports' ignore values 
     $('#spanPorts').html() === "All Ports"  ? document.parameterForm.parameter_7.value = "n/a" : document.parameterForm.parameter_7.value = $('#portNumber').val();
     document.parameterForm.parameter_8.value = $('#spanTraffic').html();
   }
@@ -67,7 +69,7 @@ $(document).ready( function(){
     }
 
     console.log(app.config);
-    $.get('/cgi-bin/cgi.sh', { 'probe' : app.config.probe, 'time' : app.config.iTime /*, 'ip' : document.timeframe.tf_ip.value, 'port' : document.timeframe.tf_port.value, 'rate' : 'ms' */}, function(data) {
+    $.get('/cgi-bin/cgi.sh', { 'probe' : app.config.probe, 'time' : app.config.iTime, 'gran' : app.config.timespan /*, 'ip' : document.timeframe.tf_ip.value, 'port' : document.timeframe.tf_port.value, 'rate' : 'ms' */}, function(data) {
         })
         .done( function(data) {
 			// process data here
