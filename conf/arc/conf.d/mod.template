@@ -3,6 +3,8 @@
 ##  Foo Module 
 ## --------------- 
 ##
+## http://www.lighttpd.net/documentation/Foo.html
+##
 server.modules += ( "mod_Foo" )
 
 ##
